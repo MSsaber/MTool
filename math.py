@@ -7,6 +7,8 @@ import area
 import check
 import xmap
 import volume
+import catch
+import cal
 
 ac = activer.Activer()
 la = line.lineActiver()
@@ -14,6 +16,8 @@ aa = area.areaActiver()
 c = check.checkActiver()
 xm = xmap.mapActiver()
 v = volume.volumeActiver()
+ca = catch.catchActiver()
+cal = cal.calActiver()
 
 cm = commond.Commond()
 done = False
@@ -23,6 +27,8 @@ cm.addActiver(aa)
 cm.addActiver(c)
 cm.addActiver(xm)
 cm.addActiver(v)
+cm.addActiver(ca)
+cm.addActiver(cal)
 
 while done == False:
     args = input("等待命令:")
@@ -37,11 +43,12 @@ while done == False:
     cmdStr = cm.getCommond()
     print("")
     cmdStr.rstrip()
-    cm.doCommond(cmdStr.rstrip())
+    isDone = cm.doCommond(cmdStr.rstrip())
     cm.readCommond([])
+    if isDone == False:
+        print("无效命令!")
+        print(" ")
 
 print(" ")
 print("计算结束")
-cm.doCommond("-area -tri")
-cm.doCommond("-area -quad")
-cm.doCommond("-area -rad")
+
