@@ -9,6 +9,11 @@ import xmap
 import volume
 import catch
 import cal
+import sys
+
+"""f_result=open('result.txt', 'w') 
+sys.stdout=f_result
+print('print to file')"""
 
 ac = activer.Activer()
 la = line.lineActiver()
@@ -31,7 +36,7 @@ cm.addActiver(ca)
 cm.addActiver(cal)
 
 while done == False:
-    args = input("等待命令:")
+    args = catch.mathInput("等待命令:")
     cm.readArgs(args)
     cm.analysisArgs()
     done= cm.isCommond("quit")

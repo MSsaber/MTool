@@ -26,7 +26,7 @@ class lineActiver(activer.Activer):
         print("计算线段正弦/余弦值")
         Len1 = catch.getNum("请输入斜边长:")
         angle = catch.getNum("请输入角度:")
-        t = input("计算1.正弦 2.余弦[输入序号]")
+        t = catch.getNum("计算1.正弦 2.余弦[输入序号]")
         self.res = line(float(Len1),float(angle),int(t))
         print("线段计算结果:" + str(self.res))
         print(" ")

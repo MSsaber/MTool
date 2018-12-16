@@ -35,7 +35,9 @@ class volumeActiver(activer.Activer):
 
     def setEvent(self):
         self.etype = "-v"
+        self.event["-v -b -ss"] = "Ss"
         self.event["-v -b"] = "Bridge"
+        self.event["-v -p -sh"] = "Sh"
         self.event["-v -p -tri"] = "Ptri"
         self.event["-v -p -quad"] = "Pquad"
         self.event["-v -p -rad"] = "Prad"
@@ -66,6 +68,15 @@ class volumeActiver(activer.Activer):
             self.res = OutVolume("椭圆锥",Pyramid(s,float(h)))
         elif self.mask == "Es":
             self.res = OutVolume("椭球",Ellipsoid())
+        elif self.mask == "Ss":
+            s1 = catch.getNum("请输入底面积:")
+            s2 = catch.getNum("请输入顶面积:")
+            h = catch.getNum("请输入台体高:")
+            self.res = OutVolume("台体", Bridge(float(s1),float(s2),float(h)))
+        elif self.mask == "Sh":
+            s = catch.getNum("请输入底面积:")
+            h = catch.getNum("请输入锥体高:")
+            self.res = OutVolume("锥体", Pyramid(float(s),float(h)))
 
 
 
